@@ -340,6 +340,8 @@ namespace Mono.FastCgi {
 					if (socket != null) {
 						try {
 							socket.Close ();
+						} catch (System.Net.Sockets.SocketException) {
+							// "The socket is not connected" could be thrown, ignore
 						} finally {
 							socket = null;
 						}
